@@ -1,0 +1,51 @@
+.wrapper {
+	--text-color: #d1d1d1;
+
+	display: grid;
+	grid-template-columns: 45px 1fr 60px;
+	height: 45px;
+	background-color: #fff;
+	border: 1px solid #ebebeb;
+	border-radius: 15px;
+	margin-bottom: 20px;
+
+	font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 16.41px;
+	letter-spacing: 0px;
+	color: var(--text-color);
+	align-items: center;
+}
+
+.wrapper .imageWrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.wrapper input {
+	border: none;
+	height: 100%;
+	padding: 0 5px;
+}
+
+.wrapper input::placeholder {
+	color: var(--text-color);
+	opacity: 1;
+}
+
+.wrapper input:-ms-input-placeholder {
+	color: var(--text-color); /* Для IE */
+}
+
+.wrapper input::-ms-input-placeholder {
+	color: var(--text-color); /* Для Edge */
+}
+
+.wrapper input:focus {
+	outline: none;
+}
+
+.wrapper .counter {
+	text-align: center;
+}

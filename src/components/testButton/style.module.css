@@ -1,0 +1,14 @@
+.buttonWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.button {
+	border-radius: 10px;
+	border: none;
+	color: #fff;
+	font-size: "Montserrat";
+	height: 30px;
+	width: 95px;
+}
