@@ -6,10 +6,10 @@ import { getAllTests } from "../../../api/services/tests.service";
 import SearchFilter from "../../../components/searchFilter/SearchFilter";
 import TestsList from "../../../components/testsList/TestsList";
 import { getAllSites } from "../../../api/services/sites.service";
+import SearchNotFound from "../../../components/searchNotFound/SearchNotFound";
 
 const FilteredList: React.FC = () => {
 	const {
-		tests,
 		setTests,
 		sites,
 		setSites,
@@ -46,14 +46,7 @@ const FilteredList: React.FC = () => {
 				filterTests={debouncedFilterTests}
 			/>
 			{filteredTests === null ? (
-				<button
-					onClick={() => {
-						setFilteredTests(tests);
-						setSearchFilterValue("");
-					}}
-				>
-					Rest
-				</button>
+				<SearchNotFound />
 			) : (
 				<TestsList tests={filteredTests} sites={sites} />
 			)}

@@ -5,7 +5,7 @@ interface IProps {
 }
 
 const PageHeader: React.FC<IProps> = ({ text }) => {
-	return <h1 className={styles.headerStyle}>{text}</h1>;
+	return <h1 className={styles.pageHeader}>{text}</h1>;
 };
 
 export default PageHeader;

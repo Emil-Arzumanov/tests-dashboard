@@ -1,4 +1,4 @@
-.wrapper {
+.searchFilterWrapper {
 	--text-color: #d1d1d1;
 
 	display: grid;
@@ -19,34 +19,34 @@
 	align-items: center;
 }
 
-.wrapper .imageWrapper {
+.searchFilterImageWrapper {
 	display: flex;
 	justify-content: center;
 }
 
-.wrapper input {
+.searchFilterWrapper input {
 	border: none;
 	height: 100%;
 	padding: 0 5px;
 }
 
-.wrapper input::placeholder {
+.searchFilterWrapper input::placeholder {
 	color: var(--text-color);
 	opacity: 1;
 }
 
-.wrapper input:-ms-input-placeholder {
+.searchFilterWrapper input:-ms-input-placeholder {
 	color: var(--text-color); /* Для IE */
 }
 
-.wrapper input::-ms-input-placeholder {
+.searchFilterWrapper input::-ms-input-placeholder {
 	color: var(--text-color); /* Для Edge */
 }
 
-.wrapper input:focus {
+.searchFilterWrapper input:focus {
 	outline: none;
 }
 
-.wrapper .counter {
+.searchFilterCounter {
 	text-align: center;
 }

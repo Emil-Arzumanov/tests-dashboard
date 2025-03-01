@@ -1,0 +1,17 @@
+.searchNotFoundWrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 37px;
+	flex-grow: 1;
+}
+
+.searchNotFoundWrapper span {
+	font-family: Montserrat;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 21.94px;
+	letter-spacing: 0%;
+	text-align: center;
+}

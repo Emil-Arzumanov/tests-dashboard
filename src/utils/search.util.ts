@@ -1,5 +1,5 @@
 import { TestModel } from "../libs/models/test.model";
-import { NullableTestModelArray } from "../libs/types/ModelTypes";
+import { NullableTestModelArray } from "../libs/types/modelTypes";
 
 export const filterTests = (
 	tests: TestModel[],

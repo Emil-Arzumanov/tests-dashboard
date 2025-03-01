@@ -1,5 +1,5 @@
 import style from "./style.module.css";
-import { NullableTestModelArray } from "../../libs/types/ModelTypes";
+import { NullableTestModelArray } from "../../libs/types/modelTypes";
 import searchImg from "../../assets/search.png";
 
 interface IProps {
@@ -21,8 +21,8 @@ const SearchFilter: React.FC<IProps> = ({
 	};
 
 	return (
-		<div className={style.wrapper}>
-			<div className={style.imageWrapper}>
+		<div className={style.searchFilterWrapper}>
+			<div className={style.searchFilterImageWrapper}>
 				<img src={searchImg} alt="Search" />
 			</div>
 			<input
@@ -31,7 +31,9 @@ const SearchFilter: React.FC<IProps> = ({
 				onChange={handleInputChange}
 				value={searchValue}
 			/>
-			<div className={style.counter}>{tests?.length ?? 0} tests</div>
+			<div className={style.searchFilterCounter}>
+				{tests?.length ?? 0} tests
+			</div>
 		</div>
 	);
 };

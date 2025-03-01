@@ -1,14 +1,15 @@
-.buttonWrapper {
+.listButtonWrapper {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-.button {
+.listButton {
 	border-radius: 10px;
 	border: none;
 	color: #fff;
-	font-size: "Montserrat";
+	font-family: "Montserrat", sans-serif;
 	height: 30px;
 	width: 95px;
+	background-color: #3498db;
 }

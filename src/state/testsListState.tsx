@@ -1,6 +1,6 @@
 import React, { useCallback, useReducer } from "react";
 import { TestModel } from "../libs/models/test.model";
-import { NullableTestModelArray } from "../libs/types/ModelTypes";
+import { NullableTestModelArray } from "../libs/types/modelTypes";
 import { SiteModel } from "../libs/models/site.model";
 
 import { debounce, filterTests } from "../utils/search.util";
