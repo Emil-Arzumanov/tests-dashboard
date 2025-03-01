@@ -1,8 +1,8 @@
 import style from "./style.module.css";
-import { TestModel } from "../../libs/models/test.model";
+import { TestModel } from "@libs/models/test.model";
 import TestItem from "../testItem/TestItem";
-import { SiteModel } from "../../libs/models/site.model";
-import { getSiteUrlById } from "../../utils/testList.util";
+import { SiteModel } from "@libs/models/site.model";
+import { getSiteUrlById } from "@utils/testList.util";
 
 interface IProps {
 	tests: TestModel[];

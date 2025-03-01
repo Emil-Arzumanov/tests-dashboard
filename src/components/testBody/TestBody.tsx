@@ -2,9 +2,9 @@ import style from "./style.module.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { TestModel } from "../../libs/models/test.model";
+import { TestModel } from "@libs/models/test.model";
 
-import { getTestById } from "../../api/services/tests.service";
+import { getTestById } from "@api/services/tests.service";
 
 const TestBody: React.FC = () => {
 	const { id } = useParams();

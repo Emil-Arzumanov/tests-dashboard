@@ -1,9 +1,9 @@
 import { http } from "..";
 import { tests } from "../apiUrlsConfig";
 
-import { TestDto } from "../../libs/dtos/test.dto";
-import { TestMapperFromDto } from "../../libs/mappers/test.mapper";
-import { TestModel } from "../../libs/models/test.model";
+import { TestDto } from "@libs/dtos/test.dto";
+import { TestMapperFromDto } from "@libs/mappers/test.mapper";
+import { TestModel } from "@libs/models/test.model";
 
 export const getAllTests = async (): Promise<TestModel[]> => {
 	try {

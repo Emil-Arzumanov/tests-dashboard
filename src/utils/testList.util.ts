@@ -1,4 +1,4 @@
-import { SiteModel } from "../libs/models/site.model";
+import { SiteModel } from "@libs/models/site.model";
 
 export const getSiteUrlById = (
 	sites: SiteModel[],

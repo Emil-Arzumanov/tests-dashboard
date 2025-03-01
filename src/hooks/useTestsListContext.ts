@@ -1,5 +1,5 @@
 import React from "react";
-import { TestsListContext } from "../state/testsListState";
+import { TestsListContext } from "@state/testsListState";
 
 export const useTestsListContext = () => {
 	const context = React.useContext(TestsListContext);

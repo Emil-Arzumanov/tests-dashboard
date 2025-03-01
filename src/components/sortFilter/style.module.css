@@ -1,0 +1,14 @@
+.sortFilterWrapper {
+	display: grid;
+	grid-template-columns:
+		15px minmax(340px, 4fr) 100px 100px minmax(130px, 1.5fr)
+		130px;
+	padding: 10px 0;
+	color: #999999;
+
+	font-family: "Roboto";
+	font-weight: 500;
+	font-size: 11px;
+	line-height: 12.89px;
+	letter-spacing: 0%;
+}

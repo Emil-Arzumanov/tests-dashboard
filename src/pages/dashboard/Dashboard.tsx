@@ -1,7 +1,7 @@
-import { TestsListContextProvider } from "../../state/testsListState";
+import { TestsListContextProvider } from "@state/testsListState";
 
-import CommonLayout from "../../components/commonLayout/CommonLayout";
-import PageHeader from "../../components/pageHeader/PageHeader";
+import CommonLayout from "@components/commonLayout/CommonLayout";
+import PageHeader from "@components/pageHeader/PageHeader";
 import FilteredList from "./filteredList/FilteredList";
 
 const Dashboard: React.FC = () => {

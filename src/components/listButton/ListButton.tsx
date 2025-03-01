@@ -1,8 +1,5 @@
 import style from "./style.module.css";
-import {
-	ListButtonName,
-	BUTTON_NAME_TO_COLOR,
-} from "../../libs/types/listButton";
+import { ListButtonName, BUTTON_NAME_TO_COLOR } from "@libs/types/listButton";
 
 interface IProps {
 	buttonName: ListButtonName;

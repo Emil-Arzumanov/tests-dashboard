@@ -1,7 +1,7 @@
 import style from "./style.module.css";
 import TestButton from "../listButton/ListButton";
-import { ListButtonName } from "../../libs/types/listButton";
-import { useTestsListContext } from "../../hooks/useTestsListContext";
+import { ListButtonName } from "@libs/types/listButton";
+import { useTestsListContext } from "@hooks/useTestsListContext";
 
 const SearchNotFound: React.FC = () => {
 	const { tests, setFilteredTests, setSearchFilterValue } =

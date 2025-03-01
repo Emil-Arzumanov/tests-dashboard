@@ -1,23 +1,23 @@
 import style from "./style.module.css";
-import { NullableTestModelArray } from "../../libs/types/modelTypes";
-import searchImg from "../../assets/search.png";
+import { NullableTestModelArray } from "@libs/types/modelTypes";
+import searchImg from "@assets/search.png";
 
 interface IProps {
 	tests: NullableTestModelArray;
 	searchValue: string;
 	setSearchValue: (payload: string) => void;
-	filterTests: () => void;
+	filterTestsProp: () => void;
 }
 
 const SearchFilter: React.FC<IProps> = ({
 	tests,
 	searchValue,
 	setSearchValue,
-	filterTests,
+	filterTestsProp,
 }) => {
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchValue(e.target.value);
-		filterTests();
+		filterTestsProp();
 	};
 
 	return (

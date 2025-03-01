@@ -16,6 +16,9 @@
 	font-family: "Roboto", sans-serif;
 	display: flex;
 	align-items: center;
+}
+
+.listItemText {
 	color: #5c5c5c;
 	font-size: 12px;
 	line-height: 14.06px;

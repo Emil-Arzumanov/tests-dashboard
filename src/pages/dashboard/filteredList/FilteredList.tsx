@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 
-import { useTestsListContext } from "../../../hooks/useTestsListContext";
-import { getAllTests } from "../../../api/services/tests.service";
+import { useTestsListContext } from "@hooks/useTestsListContext";
+import { getAllTests } from "@api/services/tests.service";
 
-import SearchFilter from "../../../components/searchFilter/SearchFilter";
-import TestsList from "../../../components/testsList/TestsList";
-import { getAllSites } from "../../../api/services/sites.service";
-import SearchNotFound from "../../../components/searchNotFound/SearchNotFound";
+import SearchFilter from "@components/searchFilter/SearchFilter";
+import TestsList from "@components/testsList/TestsList";
+import { getAllSites } from "@api/services/sites.service";
+import SearchNotFound from "@components/searchNotFound/SearchNotFound";
+import SortFilter from "@components/sortFilter/SortFilter";
 
 const FilteredList: React.FC = () => {
 	const {
@@ -17,7 +18,10 @@ const FilteredList: React.FC = () => {
 		setFilteredTests,
 		searchFilterValue,
 		setSearchFilterValue,
-		debouncedFilterTests,
+		debouncedSearchFilter,
+		sortFilterValue,
+		setSortFilterValue,
+		debouncedSortFilter,
 	} = useTestsListContext();
 
 	useEffect(() => {
@@ -43,12 +47,20 @@ const FilteredList: React.FC = () => {
 				tests={filteredTests}
 				searchValue={searchFilterValue}
 				setSearchValue={setSearchFilterValue}
-				filterTests={debouncedFilterTests}
+				filterTestsProp={debouncedSearchFilter}
 			/>
 			{filteredTests === null ? (
 				<SearchNotFound />
 			) : (
-				<TestsList tests={filteredTests} sites={sites} />
+				<>
+					<SortFilter
+						tests={filteredTests}
+						sortValue={sortFilterValue}
+						setSortValue={setSortFilterValue}
+						filterTestsProp={debouncedSortFilter}
+					/>
+					<TestsList tests={filteredTests} sites={sites} />
+				</>
 			)}
 		</>
 	);

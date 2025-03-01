@@ -1,10 +1,10 @@
 import { http } from "..";
 import { sites } from "../apiUrlsConfig";
 
-import { SiteDto } from "../../libs/dtos/site.dto";
-import { SiteMapperFromDto } from "../../libs/mappers/site.mapper";
-import { SiteModel } from "../../libs/models/site.model";
-import { TestModel } from "../../libs/models/test.model";
+import { SiteDto } from "@libs/dtos/site.dto";
+import { SiteMapperFromDto } from "@libs/mappers/site.mapper";
+import { SiteModel } from "@libs/models/site.model";
+import { TestModel } from "@libs/models/test.model";
 
 export const getAllSites = async (): Promise<SiteModel[]> => {
 	try {

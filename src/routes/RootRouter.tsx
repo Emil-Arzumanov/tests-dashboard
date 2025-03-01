@@ -3,11 +3,11 @@ import { Navigate, RouteObject, useRoutes } from "react-router-dom";
 import { pagesPaths } from "./pagePathsConfig";
 import ProtectedIdRoute from "./guards/ProtectedIdRoute";
 
-import Dashboard from "../pages/dashboard/Dashboard";
-import { dashboardRoutes } from "../pages/dashboard/routes";
+import Dashboard from "@pages/dashboard/Dashboard";
+import { dashboardRoutes } from "@pages/dashboard/routes";
 
-import { testFinalizeRoutes } from "../pages/testFinalize/routes";
-import { testResultRoutes } from "../pages/testResults/routes";
+import { testFinalizeRoutes } from "@pages/testFinalize/routes";
+import { testResultRoutes } from "@pages/testResults/routes";
 
 const routes: RouteObject[] = [
 	{

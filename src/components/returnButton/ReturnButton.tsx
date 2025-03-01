@@ -1,7 +1,7 @@
 import styles from "./style.module.css";
-import arrowLeftImg from "../../assets/arrowLeft.png";
+import arrowLeftImg from "@assets/arrowLeft.png";
 import { useNavigate } from "react-router-dom";
-import { pagesPaths } from "../../routes/pagePathsConfig";
+import { pagesPaths } from "@routes/pagePathsConfig";
 
 const ReturnButton: React.FC = () => {
 	const navigate = useNavigate();
