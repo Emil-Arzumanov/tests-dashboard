@@ -1,6 +1,6 @@
 import style from "./style.module.css";
 import { NullableTestModelArray } from "../../libs/types/ModelTypes";
-import vector from "../../assets/Vector.png";
+import searchImg from "../../assets/search.png";
 
 interface IProps {
 	tests: NullableTestModelArray;
@@ -23,7 +23,7 @@ const SearchFilter: React.FC<IProps> = ({
 	return (
 		<div className={style.wrapper}>
 			<div className={style.imageWrapper}>
-				<img src={vector} alt="Search" />
+				<img src={searchImg} alt="Search" />
 			</div>
 			<input
 				type="search"

@@ -14,7 +14,7 @@ export const getAllTests = async (): Promise<TestModel[]> => {
 	}
 };
 
-export const getTestById = async (id: number): Promise<TestModel> => {
+export const getTestById = async (id: TestModel["id"]): Promise<TestModel> => {
 	try {
 		const { data } = await http.get<TestDto>(tests.getTestById(id));
 		return TestMapperFromDto(data);
