@@ -7,8 +7,15 @@ import Dashboard from "@pages/dashboard/Dashboard";
 import { dashboardRoutes } from "@pages/dashboard/routes";
 
 import { testFinalizeRoutes } from "@pages/testFinalize/routes";
-import { testResultRoutes } from "@pages/testResults/routes";
+import { testResultsRoutes } from "@pages/testResults/routes";
 
+/**
+ * Defines the root router configuration for the application.
+ * Includes routes for the Dashboard, Test Finalize, and Test Results pages.
+ * Redirects unknown paths and the root path to the Dashboard.
+ * Uses ProtectedIdRoute to guard routes that require an ID.
+ * @returns A router configuration with nested routes and redirects.
+ */
 const routes: RouteObject[] = [
 	{
 		path: pagesPaths.testsLists,
@@ -23,7 +30,7 @@ const routes: RouteObject[] = [
 	{
 		path: pagesPaths.testResults,
 		element: <ProtectedIdRoute requireId />,
-		children: [...testResultRoutes],
+		children: [...testResultsRoutes],
 	},
 	{
 		path: "*",

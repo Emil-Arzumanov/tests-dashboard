@@ -1,16 +1,22 @@
 import style from "./style.module.css";
-import { NullableTestModelArray } from "@libs/types/modelTypes";
 import searchImg from "@assets/search.png";
 
 interface IProps {
-	tests: NullableTestModelArray;
+	filteredTestsLength: number;
 	searchValue: string;
 	setSearchValue: (payload: string) => void;
 	filterTestsProp: () => void;
 }
 
+/**
+ * Displays a search filter component that allows users to search for tests.
+ * @param filteredTestsLength The count of available tests.
+ * @param searchValue The current search input value.
+ * @param setSearchValue A function to update the search input value.
+ * @param filterTestsProp A function to trigger filtering when the search input changes.
+ */
 const SearchFilter: React.FC<IProps> = ({
-	tests,
+	filteredTestsLength,
 	searchValue,
 	setSearchValue,
 	filterTestsProp,
@@ -32,7 +38,7 @@ const SearchFilter: React.FC<IProps> = ({
 				value={searchValue}
 			/>
 			<div className={style.searchFilterCounter}>
-				{tests?.length ?? 0} tests
+				{filteredTestsLength} tests
 			</div>
 		</div>
 	);

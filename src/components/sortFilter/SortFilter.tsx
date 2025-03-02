@@ -14,6 +14,12 @@ interface IProps {
 	filterTestsProp: () => void;
 }
 
+/**
+ * Displays a sort filter component that allows sorting by different fields.
+ * @param sortValue The current sort value, including the field and direction.
+ * @param setSortField A function to update the sort field when a filter is clicked.
+ * @param filterTestsProp A function to trigger filtering after the sort field is updated.
+ */
 const SortFilter: React.FC<IProps> = ({
 	sortValue,
 	setSortField,

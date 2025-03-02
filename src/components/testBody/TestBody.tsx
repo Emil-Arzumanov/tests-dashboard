@@ -6,6 +6,11 @@ import { TestModel } from "@libs/models/test.model";
 
 import { getTestById } from "@api/services/tests.service";
 
+/**
+ * Displays the body of a test, including its name or an error message if the test is not found.
+ * Fetches the test data by ID from the URL parameters.
+ * @returns A div containing the test name or an error message.
+ */
 const TestBody: React.FC = () => {
 	const { id } = useParams();
 	const testId = Number(id);

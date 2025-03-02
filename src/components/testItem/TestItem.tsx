@@ -16,6 +16,12 @@ interface IProps {
 	pathToNavigate: string;
 }
 
+/**
+ * Displays a single test item with its details.
+ * @param test The test object containing details like id, name, type, status, and siteId.
+ * @param siteUrl The URL of the site associated with the test.
+ * @param pathToNavigate The base path used for navigation when the filter button is clicked.
+ */
 const TestItem: React.FC<IProps> = ({ test, siteUrl, pathToNavigate }) => {
 	const { sitesColors } = useTestsListContext();
 

@@ -137,26 +137,43 @@ export const TestsListContext = React.createContext<ITestsListContext | null>(
 export const TestsListContextProvider = ({ children }: IProps) => {
 	const [state, dispatch] = useReducer(testsListReducer, initialState);
 
-	const setTests = (payload: TestModel[]) =>
-		dispatch({ type: "SET_TESTS", payload });
+	const setTests = useCallback(
+		(payload: TestModel[]) => dispatch({ type: "SET_TESTS", payload }),
+		[]
+	);
 
-	const setSites = (payload: SiteModel[]) =>
-		dispatch({ type: "SET_SITES", payload });
-	const setSitesColors = (payload: string[]) =>
-		dispatch({ type: "SET_SITES_COLORS", payload });
+	const setSites = useCallback(
+		(payload: SiteModel[]) => dispatch({ type: "SET_SITES", payload }),
+		[]
+	);
+	const setSitesColors = useCallback(
+		(payload: string[]) => dispatch({ type: "SET_SITES_COLORS", payload }),
+		[]
+	);
 
-	const setFilteredTests = (payload: NullableTestModelArray) =>
-		dispatch({ type: "SET_FILTERED_TESTS", payload });
+	const setFilteredTests = useCallback(
+		(payload: NullableTestModelArray) =>
+			dispatch({ type: "SET_FILTERED_TESTS", payload }),
+		[]
+	);
 
-	const setSearchFilterValue = (payload: string) =>
-		dispatch({ type: "SET_SEARCH_FILTER_VALUE", payload });
+	const setSearchFilterValue = useCallback(
+		(payload: string) => dispatch({ type: "SET_SEARCH_FILTER_VALUE", payload }),
+		[]
+	);
 
-	const setSortFilterValue = (payload: SortFilterField) =>
-		dispatch({ type: "SET_SORT_FILTER_VALUE", payload });
-	const setSortDirectionValue = (payload: SortFilterDirection) =>
-		dispatch({ type: "SET_SORT_DIRECTION_VALUE", payload });
+	const setSortFilterValue = useCallback(
+		(payload: SortFilterField) =>
+			dispatch({ type: "SET_SORT_FILTER_VALUE", payload }),
+		[]
+	);
+	const setSortDirectionValue = useCallback(
+		(payload: SortFilterDirection) =>
+			dispatch({ type: "SET_SORT_DIRECTION_VALUE", payload }),
+		[]
+	);
 
-	const filterTests = () => dispatch({ type: "FILTER_TESTS" });
+	const filterTests = useCallback(() => dispatch({ type: "FILTER_TESTS" }), []);
 	const debouncedFilter = useCallback(
 		debounce(() => {
 			filterTests();

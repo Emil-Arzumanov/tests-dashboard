@@ -3,6 +3,10 @@ import TestButton from "../listButton/ListButton";
 import { ListButtonName } from "@libs/types/listButton";
 import { useTestsListContext } from "@hooks/useTestsListContext";
 
+/**
+ * Displays a message when no search results are found and provides a button to reset the search filter.
+ * @returns A div containing a "not found" message and a reset button to clear the search filter.
+ */
 const SearchNotFound: React.FC = () => {
 	const { filterTests, setSearchFilterValue } = useTestsListContext();
 

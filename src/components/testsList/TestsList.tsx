@@ -10,6 +10,11 @@ interface IProps {
 	sites: SiteModel[];
 }
 
+/**
+ * Displays List of tests.
+ * @param tests Array of tests that will be displayed.
+ * @param sites Array of sites, each site has url that will be displayed, each test has siteId, that fits id of site.
+ */
 const TestsList: React.FC<IProps> = ({ tests, sites }) => {
 	return (
 		<div className={style.testListWrapper}>

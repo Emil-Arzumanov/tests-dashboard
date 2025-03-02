@@ -6,6 +6,12 @@ interface IProps {
 	clickHandler: () => void;
 }
 
+/**
+ * Displays a customizable button with a specific name and color.
+ * @param buttonName The name of the button, which determines its color.
+ * @param clickHandler A function to handle the button click event.
+ * @returns A styled button with the provided name and color.
+ */
 const ListButton: React.FC<IProps> = ({ buttonName, clickHandler }) => {
 	return (
 		<div className={style.listButtonWrapper}>

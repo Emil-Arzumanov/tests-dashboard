@@ -8,6 +8,13 @@ import {
 } from "@libs/types/sortFilter";
 import { getDomainFromUrl } from "./testList.util";
 
+/**
+ * Determines the new sort value based on the current field and direction.
+ * @param newField The new field to sort by.
+ * @param oldField The current field being sorted by.
+ * @param direction The current sort direction.
+ * @returns A new SortValue object with the updated field and direction.
+ */
 export const getNewSortValue = (
 	newField: SortFilterField,
 	oldField: SortFilterField,
@@ -43,6 +50,14 @@ export const getNewSortValue = (
 	}
 };
 
+/**
+ * Filters and sorts tests based on search value and sort criteria.
+ * @param tests The array of tests to filter and sort.
+ * @param searchValue The search string to filter tests by name.
+ * @param sites The array of sites to resolve site URLs for sorting.
+ * @param sortValue The current sort criteria (field and direction).
+ * @returns A filtered and sorted array of tests, or null if no tests match the search.
+ */
 export const filterTestsUtil = (
 	tests: TestModel[],
 	searchValue: string,
@@ -64,6 +79,12 @@ export const filterTestsUtil = (
 	);
 };
 
+/**
+ * Filters tests by name based on the search value.
+ * @param tests The array of tests to filter.
+ * @param searchValue The search string to filter tests by name.
+ * @returns A filtered array of tests, or null if no tests match the search.
+ */
 export const searchFilterTestsUtil = (
 	tests: TestModel[],
 	searchValue: string
@@ -76,6 +97,13 @@ export const searchFilterTestsUtil = (
 	return filteredTests.length ? filteredTests : null;
 };
 
+/**
+ * Sorts tests based on the specified field and direction.
+ * @param filteredTests The array of tests, filtered by search, to sort.
+ * @param sites The array of sites to resolve site URLs for sorting.
+ * @param sortValue The current sort criteria (field and direction).
+ * @returns A sorted array of tests, or null if the input array is null.
+ */
 export const sortFilterTestsUtil = (
 	filteredTests: NullableTestModelArray,
 	sites: SiteModel[],
@@ -145,6 +173,12 @@ export const sortFilterTestsUtil = (
 	return sortedTests.sort(compare);
 };
 
+/**
+ * Creates a debounced version of a function that delays its execution.
+ * @param callback The function to debounce.
+ * @param timeout The delay in milliseconds before the function is executed.
+ * @returns A debounced function.
+ */
 export const debounce = (callback: () => void, timeout: number) => {
 	let timer: ReturnType<typeof setTimeout>;
 

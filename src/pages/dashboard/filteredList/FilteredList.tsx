@@ -9,6 +9,12 @@ import { getAllSites } from "@api/services/sites.service";
 import SearchNotFound from "@components/searchNotFound/SearchNotFound";
 import SortFilter from "@components/sortFilter/SortFilter";
 
+/**
+ * Displays a filtered list of tests with search and sort functionality.
+ * Fetches tests and sites data on mount and resets state on unmount.
+ * Renders a search filter, sort filter, and either a list of tests or a "not found" message.
+ * @returns A component that manages and displays the filtered list of tests.
+ */
 const FilteredList: React.FC = () => {
 	const {
 		setTests,
@@ -46,7 +52,7 @@ const FilteredList: React.FC = () => {
 	return (
 		<>
 			<SearchFilter
-				tests={filteredTests}
+				filteredTestsLength={filteredTests?.length ?? 0}
 				searchValue={searchFilterValue}
 				setSearchValue={setSearchFilterValue}
 				filterTestsProp={debouncedFilter}
