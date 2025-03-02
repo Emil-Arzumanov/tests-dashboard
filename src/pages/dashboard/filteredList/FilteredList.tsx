@@ -14,6 +14,7 @@ const FilteredList: React.FC = () => {
 		setTests,
 		sites,
 		setSites,
+		setSitesColors,
 		filteredTests,
 		setFilteredTests,
 		searchFilterValue,
@@ -31,12 +32,14 @@ const FilteredList: React.FC = () => {
 
 		getAllSites().then((sites) => {
 			setSites(sites);
+			setSitesColors(["#E14165", "#C2C2FF", "#8686FF"]);
 		});
 
 		return () => {
 			setTests([]);
 			setFilteredTests([]);
 			setSites([]);
+			setSitesColors([]);
 		};
 	}, []);
 

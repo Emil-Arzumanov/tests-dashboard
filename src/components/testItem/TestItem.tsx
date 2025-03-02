@@ -6,23 +6,24 @@ import { TestModel } from "@libs/models/test.model";
 import { SiteModel } from "@libs/models/site.model";
 import { TEST_STATUS_TO_COLOR } from "@libs/mappers/test.mapper";
 
-import { getRandomColor } from "@utils/style.util";
 import FilterButton from "../listButton/ListButton";
-import { pagesPaths } from "@routes/pagePathsConfig";
 import { TEST_STATUS_TO_BUTTON_NAME } from "@libs/types/listButton";
+import { useTestsListContext } from "@hooks/useTestsListContext";
 
 interface IProps {
 	test: TestModel;
 	siteUrl: SiteModel["url"];
+	pathToNavigate: string;
 }
 
-const TestItem: React.FC<IProps> = ({ test, siteUrl }) => {
+const TestItem: React.FC<IProps> = ({ test, siteUrl, pathToNavigate }) => {
+	const { sitesColors } = useTestsListContext();
+
 	const navigate = useNavigate();
 	const filterButtonClickHandler = () => {
-		navigate(`${pagesPaths.testFinalize}/${test.id}`);
+		navigate(`${pathToNavigate}/${test.id}`);
 	};
 
-	const randomColor = getRandomColor(["#E14165", "#C2C2FF", "#8686FF"]);
 	const statusColor = TEST_STATUS_TO_COLOR[test.status];
 
 	return (
@@ -30,7 +31,7 @@ const TestItem: React.FC<IProps> = ({ test, siteUrl }) => {
 			<div
 				className={style.listItemColoredLine}
 				style={{
-					backgroundColor: randomColor,
+					backgroundColor: sitesColors.get(test.siteId),
 				}}
 			></div>
 			<div></div>

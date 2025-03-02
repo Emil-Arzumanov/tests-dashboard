@@ -1,6 +1,6 @@
 import React, { useCallback, useReducer } from "react";
 import { TestModel } from "@libs/models/test.model";
-import { NullableTestModelArray } from "@libs/types/modelTypes";
+import { NullableTestModelArray, SitesColorsMap } from "@libs/types/modelTypes";
 import { SiteModel } from "@libs/models/site.model";
 
 import { debounce, filterTestsUtil, getNewSortValue } from "@utils/filter.util";
@@ -9,6 +9,7 @@ import {
 	SortFilterField,
 	SortValue,
 } from "@libs/types/sortFilter";
+import { getSitesColors } from "@utils/style.util";
 
 export interface ITestsListContext {
 	tests: TestModel[];
@@ -16,6 +17,8 @@ export interface ITestsListContext {
 
 	sites: SiteModel[];
 	setSites: (payload: SiteModel[]) => void;
+	sitesColors: SitesColorsMap;
+	setSitesColors: (payload: string[]) => void;
 
 	filteredTests: NullableTestModelArray;
 	setFilteredTests: (payload: NullableTestModelArray) => void;
@@ -38,6 +41,7 @@ interface IProps {
 type Action =
 	| { type: "SET_TESTS"; payload: TestModel[] }
 	| { type: "SET_SITES"; payload: SiteModel[] }
+	| { type: "SET_SITES_COLORS"; payload: string[] }
 	| { type: "SET_FILTERED_TESTS"; payload: NullableTestModelArray }
 	| { type: "SET_SEARCH_FILTER_VALUE"; payload: string }
 	| { type: "SET_SORT_FILTER_VALUE"; payload: SortFilterField }
@@ -50,6 +54,8 @@ const initialState: ITestsListContext = {
 
 	sites: [],
 	setSites: () => {},
+	sitesColors: new Map(),
+	setSitesColors: () => {},
 
 	filteredTests: [],
 	setFilteredTests: () => {},
@@ -78,6 +84,11 @@ const testsListReducer = (
 
 		case "SET_SITES":
 			return { ...state, sites: action.payload };
+		case "SET_SITES_COLORS":
+			return {
+				...state,
+				sitesColors: getSitesColors(state.sites, action.payload),
+			};
 
 		case "SET_FILTERED_TESTS":
 			return { ...state, filteredTests: action.payload };
@@ -131,6 +142,8 @@ export const TestsListContextProvider = ({ children }: IProps) => {
 
 	const setSites = (payload: SiteModel[]) =>
 		dispatch({ type: "SET_SITES", payload });
+	const setSitesColors = (payload: string[]) =>
+		dispatch({ type: "SET_SITES_COLORS", payload });
 
 	const setFilteredTests = (payload: NullableTestModelArray) =>
 		dispatch({ type: "SET_FILTERED_TESTS", payload });
@@ -157,6 +170,7 @@ export const TestsListContextProvider = ({ children }: IProps) => {
 				...state,
 				setTests,
 				setSites,
+				setSitesColors,
 				setFilteredTests,
 				setSearchFilterValue,
 				setSortFilterValue,

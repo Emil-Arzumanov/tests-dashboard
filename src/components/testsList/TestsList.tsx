@@ -3,6 +3,7 @@ import { TestModel } from "@libs/models/test.model";
 import TestItem from "../testItem/TestItem";
 import { SiteModel } from "@libs/models/site.model";
 import { getSiteUrlById } from "@utils/testList.util";
+import { pagesPaths } from "@routes/pagePathsConfig";
 
 interface IProps {
 	tests: TestModel[];
@@ -17,6 +18,7 @@ const TestsList: React.FC<IProps> = ({ tests, sites }) => {
 					key={test.id}
 					test={test}
 					siteUrl={getSiteUrlById(sites, test.siteId)}
+					pathToNavigate={pagesPaths.testFinalize}
 				/>
 			))}
 		</div>
