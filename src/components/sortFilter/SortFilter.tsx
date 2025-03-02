@@ -1,27 +1,59 @@
 import style from "./style.module.css";
-import { NullableTestModelArray } from "@libs/types/modelTypes";
-import { SortValue } from "@libs/types/sortFilter";
+import {
+	SortFilterDirection,
+	SortFilterField,
+	SortValue,
+} from "@libs/types/sortFilter";
+
+import arrowDown from "@assets/arrowDown.png";
+import arrowUp from "@assets/arrowUp.png";
 
 interface IProps {
-	tests: NullableTestModelArray;
 	sortValue: SortValue;
-	setSortValue: (payload: SortValue) => void;
+	setSortField: (payload: SortFilterField) => void;
 	filterTestsProp: () => void;
 }
 
 const SortFilter: React.FC<IProps> = ({
-	tests,
 	sortValue,
-	setSortValue,
-	filteredTests,
+	setSortField,
+	filterTestsProp,
 }) => {
+	const getArrow = (field: SortFilterField) => {
+		if (
+			field !== sortValue.field ||
+			sortValue.direction === SortFilterDirection.NONE
+		)
+			return "";
+
+		return (
+			<img
+				src={
+					sortValue.direction === SortFilterDirection.ASC ? arrowUp : arrowDown
+				}
+				alt="Arrow"
+			/>
+		);
+	};
+
 	return (
 		<div className={style.sortFilterWrapper}>
 			<div></div>
-			<div>NAME</div>
-			<div>TYPE</div>
-			<div>STATUS</div>
-			<div>SITE</div>
+			{Object.values(SortFilterField)
+				.filter((field) => field !== SortFilterField.NONE)
+				.map((field) => (
+					<div key={field}>
+						<div
+							onClick={() => {
+								setSortField(field);
+								filterTestsProp();
+							}}
+							className={style.sortFilter}
+						>
+							<span>{field}</span> {getArrow(field)}
+						</div>
+					</div>
+				))}
 			<div></div>
 		</div>
 	);

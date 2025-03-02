@@ -18,10 +18,9 @@ const FilteredList: React.FC = () => {
 		setFilteredTests,
 		searchFilterValue,
 		setSearchFilterValue,
-		debouncedSearchFilter,
 		sortFilterValue,
 		setSortFilterValue,
-		debouncedSortFilter,
+		debouncedFilter,
 	} = useTestsListContext();
 
 	useEffect(() => {
@@ -47,17 +46,16 @@ const FilteredList: React.FC = () => {
 				tests={filteredTests}
 				searchValue={searchFilterValue}
 				setSearchValue={setSearchFilterValue}
-				filterTestsProp={debouncedSearchFilter}
+				filterTestsProp={debouncedFilter}
 			/>
 			{filteredTests === null ? (
 				<SearchNotFound />
 			) : (
 				<>
 					<SortFilter
-						tests={filteredTests}
 						sortValue={sortFilterValue}
-						setSortValue={setSortFilterValue}
-						filterTestsProp={debouncedSortFilter}
+						setSortField={setSortFilterValue}
+						filterTestsProp={debouncedFilter}
 					/>
 					<TestsList tests={filteredTests} sites={sites} />
 				</>

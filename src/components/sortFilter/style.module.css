@@ -4,11 +4,30 @@
 		15px minmax(340px, 4fr) 100px 100px minmax(130px, 1.5fr)
 		130px;
 	padding: 10px 0;
-	color: #999999;
+}
 
+.sortFilter {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	column-gap: 8px;
+	max-width: 47px;
+}
+
+.sortFilter span {
+	color: #999999;
 	font-family: "Roboto";
 	font-weight: 500;
 	font-size: 11px;
 	line-height: 12.89px;
 	letter-spacing: 0%;
+
+	user-select: none;
+	-webkit-user-select: none; /* Для Safari */
+	-moz-user-select: none; /* Для Firefox */
+	-ms-user-select: none; /* Для IE/Edge */
+}
+
+.sortFilter img {
+	max-width: 7px;
 }

@@ -7,7 +7,15 @@ export const getSiteUrlById = (
 	const site = sites.find((site) => site.id === id);
 	if (!site) return "";
 
+	return getDomainFromUrl(site.url);
+};
+
+export const getDomainFromUrl = (
+	siteUrl: SiteModel["url"]
+): SiteModel["url"] => {
+	if (siteUrl.length === 0) return "";
+
 	const domainRegex = /^(https?:\/\/)?(www\.)?([^/]+)/i;
-	const match = site.url.match(domainRegex);
+	const match = siteUrl.match(domainRegex);
 	return match ? match[3] : "";
 };

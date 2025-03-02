@@ -4,12 +4,11 @@ import { ListButtonName } from "@libs/types/listButton";
 import { useTestsListContext } from "@hooks/useTestsListContext";
 
 const SearchNotFound: React.FC = () => {
-	const { tests, setFilteredTests, setSearchFilterValue } =
-		useTestsListContext();
+	const { filterTests, setSearchFilterValue } = useTestsListContext();
 
 	const filterButtonClickHandler = () => {
-		setFilteredTests(tests);
 		setSearchFilterValue("");
+		filterTests();
 	};
 
 	return (

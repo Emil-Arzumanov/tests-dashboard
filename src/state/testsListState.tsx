@@ -3,11 +3,7 @@ import { TestModel } from "@libs/models/test.model";
 import { NullableTestModelArray } from "@libs/types/modelTypes";
 import { SiteModel } from "@libs/models/site.model";
 
-import {
-	debounce,
-	searchFilterTestsUtil,
-	sortFilterTestsUtil,
-} from "@utils/filter.util";
+import { debounce, filterTestsUtil, getNewSortValue } from "@utils/filter.util";
 import {
 	SortFilterDirection,
 	SortFilterField,
@@ -27,14 +23,12 @@ export interface ITestsListContext {
 	searchFilterValue: string;
 	setSearchFilterValue: (payload: string) => void;
 
-	searchFilterTests: () => void;
-	debouncedSearchFilter: () => void;
-
 	sortFilterValue: SortValue;
-	setSortFilterValue: (payload: SortValue) => void;
+	setSortFilterValue: (payload: SortFilterField) => void;
+	setSortDirectionValue: (payload: SortFilterDirection) => void;
 
-	sortFilterTests: () => void;
-	debouncedSortFilter: () => void;
+	filterTests: () => void;
+	debouncedFilter: () => void;
 }
 
 interface IProps {
@@ -46,9 +40,9 @@ type Action =
 	| { type: "SET_SITES"; payload: SiteModel[] }
 	| { type: "SET_FILTERED_TESTS"; payload: NullableTestModelArray }
 	| { type: "SET_SEARCH_FILTER_VALUE"; payload: string }
-	| { type: "SEARCH_FILTER_TESTS" }
-	| { type: "SET_SORT_FILTER_VALUE"; payload: SortValue }
-	| { type: "SORT_FILTER_TESTS" };
+	| { type: "SET_SORT_FILTER_VALUE"; payload: SortFilterField }
+	| { type: "SET_SORT_DIRECTION_VALUE"; payload: SortFilterDirection }
+	| { type: "FILTER_TESTS" };
 
 const initialState: ITestsListContext = {
 	tests: [],
@@ -63,17 +57,15 @@ const initialState: ITestsListContext = {
 	searchFilterValue: "",
 	setSearchFilterValue: () => {},
 
-	searchFilterTests: () => {},
-	debouncedSearchFilter: () => {},
-
 	sortFilterValue: {
 		field: SortFilterField.NONE,
 		direction: SortFilterDirection.NONE,
 	},
 	setSortFilterValue: () => {},
+	setSortDirectionValue: () => {},
 
-	sortFilterTests: () => {},
-	debouncedSortFilter: () => {},
+	filterTests: () => {},
+	debouncedFilter: () => {},
 };
 
 const testsListReducer = (
@@ -93,22 +85,33 @@ const testsListReducer = (
 		case "SET_SEARCH_FILTER_VALUE":
 			return { ...state, searchFilterValue: action.payload };
 
-		case "SEARCH_FILTER_TESTS":
+		case "SET_SORT_FILTER_VALUE":
 			return {
 				...state,
-				filteredTests: searchFilterTestsUtil(
-					state.tests,
-					state.searchFilterValue
+				sortFilterValue: getNewSortValue(
+					action.payload,
+					state.sortFilterValue.field,
+					state.sortFilterValue.direction
 				),
 			};
-
-		case "SET_SORT_FILTER_VALUE":
-			return { ...state, sortFilterValue: action.payload };
-
-		case "SORT_FILTER_TESTS":
+		case "SET_SORT_DIRECTION_VALUE":
 			return {
 				...state,
-				filteredTests: sortFilterTestsUtil(state.tests, state.sortFilterValue),
+				sortFilterValue: {
+					...state.sortFilterValue,
+					direction: action.payload,
+				},
+			};
+
+		case "FILTER_TESTS":
+			return {
+				...state,
+				filteredTests: filterTestsUtil(
+					state.tests,
+					state.searchFilterValue,
+					state.sites,
+					state.sortFilterValue
+				),
 			};
 
 		default:
@@ -135,25 +138,17 @@ export const TestsListContextProvider = ({ children }: IProps) => {
 	const setSearchFilterValue = (payload: string) =>
 		dispatch({ type: "SET_SEARCH_FILTER_VALUE", payload });
 
-	const searchFilterTests = () => dispatch({ type: "SEARCH_FILTER_TESTS" });
-
-	const debouncedSearchFilter = useCallback(
-		debounce(() => {
-			searchFilterTests();
-		}, 600),
-		[searchFilterTests]
-	);
-
-	const setSortFilterValue = (payload: SortValue) =>
+	const setSortFilterValue = (payload: SortFilterField) =>
 		dispatch({ type: "SET_SORT_FILTER_VALUE", payload });
+	const setSortDirectionValue = (payload: SortFilterDirection) =>
+		dispatch({ type: "SET_SORT_DIRECTION_VALUE", payload });
 
-	const sortFilterTests = () => dispatch({ type: "SORT_FILTER_TESTS" });
-
-	const debouncedSortFilter = useCallback(
+	const filterTests = () => dispatch({ type: "FILTER_TESTS" });
+	const debouncedFilter = useCallback(
 		debounce(() => {
-			sortFilterTests();
+			filterTests();
 		}, 600),
-		[sortFilterTests]
+		[filterTests]
 	);
 
 	return (
@@ -164,11 +159,10 @@ export const TestsListContextProvider = ({ children }: IProps) => {
 				setSites,
 				setFilteredTests,
 				setSearchFilterValue,
-				searchFilterTests,
-				debouncedSearchFilter,
 				setSortFilterValue,
-				sortFilterTests,
-				debouncedSortFilter,
+				setSortDirectionValue,
+				filterTests,
+				debouncedFilter,
 			}}
 		>
 			{children}
