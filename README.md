@@ -13,3 +13,5 @@ Run app
 Run tests
 
 API in [this repository](https://development.kameleoon.net/oivanov/frontend-interview-task-api)
+
+![Mockup](./public/dashboard-mockup.png)
