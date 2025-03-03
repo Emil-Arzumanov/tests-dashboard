@@ -19,6 +19,7 @@
 			"@tests/*": ["./src/tests/*"],
 			"@utils/*": ["./src/utils/*"]
 		},
+		"types": ["vitest/globals"],
 
 		/* Bundler mode */
 		"moduleResolution": "bundler",
@@ -35,5 +36,5 @@
 		"noFallthroughCasesInSwitch": true,
 		"noUncheckedSideEffectImports": true
 	},
-	"include": ["src"]
+	"include": ["src", "./src/test/setupTests.ts"]
 }
